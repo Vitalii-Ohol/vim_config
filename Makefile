@@ -22,6 +22,7 @@ dotfiles: ## install config files
 			| sed s:"$$PWD/"::); do \
 		ln -sf $$PWD/$$file $$HOME/$$file; \
 	done;
+	@echo "Dont forget to run :PlugInstall inside vim"
 
 
 clean: ## clean this config
@@ -30,6 +31,9 @@ clean: ## clean this config
 	fi
 	@if [ -f $$HOME/.vimrc ]; then \
 		rm $$HOME/.vimrc; \
+	fi
+	@if [ -f $$HOME/.viminfo ]; then \
+		rm $$HOME/.viminfo; \
 	fi
 	sudo apt purge vim-nox
 
